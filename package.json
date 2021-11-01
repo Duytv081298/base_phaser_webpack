@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack --watch",
-    "dev": "webpack server --open"
+    "dev": "webpack server --open",
+    "dev-fb": "webpack   server --config  webpack.dev.js"
   },
   "author": "Sonat",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^9.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "raw-loader": "^4.0.2",
