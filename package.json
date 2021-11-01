@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.js",
     "start": "webpack --watch",
     "dev": "webpack server --open",
-    "dev-fb": "webpack   server --config  webpack.dev.js"
+    "dev-fb": "webpack server --config  webpack.dev.js"
   },
   "author": "Sonat",
   "license": "ISC",

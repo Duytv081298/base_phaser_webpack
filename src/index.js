@@ -11,12 +11,8 @@ const config = {
 
 
 
-if (process.env.FB_ENV || process.env.NODR_ENV == 'production') {
   FBInstant.initializeAsync()
     .then(() => {
       new Phaser.Game(config);
     }
     );
-} else {
-  new Phaser.Game(config);
-}

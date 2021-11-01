@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-// const common = require('./webpack.common');
+const TerserPlugin = require('terser-webpack-plugin');
 const config = require('./webpack.config');
 const path = require('path');
 const webpack = require('webpack');
@@ -10,6 +10,17 @@ module.exports = merge(config, {
     compress: true,
     https: true,
     port: 8080
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({

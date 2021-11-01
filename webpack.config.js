@@ -8,17 +8,25 @@ const webpack = require('webpack');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
-    clean: true,
+    filename: '[name].js',
+    path: path.resolve('dist'),
+    clean: true
   },
   mode: 'development',
-
-  devtool: 'inline-source-map', // chỉ ra dòng lỗi chính xác
-  // mode: 'production',
-
-  watch: true, // tự động thay đổi dist khi có sự thay đổi
-
+  devtool: 'inline-source-map',
+  watch: true,
+  devtool: "eval-source-map",
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -44,9 +52,6 @@ module.exports = {
     port: 8080,
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      process: 'process/browser',
-    }),
     new webpack.DefinePlugin({
       'CANVAS_RENDERER': JSON.stringify(true),
       'WEBGL_RENDERER': JSON.stringify(true)
