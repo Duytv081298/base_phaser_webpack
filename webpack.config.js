@@ -6,10 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpack = require('webpack');
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/js/index_local.js',
   output: {
     filename: '[name].js',
-    path: path.resolve('dist'),
+    path: path.resolve('build'),
     clean: true
   },
   mode: 'development',
@@ -59,19 +59,22 @@ module.exports = {
     new HtmlWebpackPlugin(
       {
         filename: 'index.html',
-        template: './index.html',
-        title: 'Phaser',
+        template: 'src/index.html',
+        title: 'Pixi',
       }
     ),
+    new webpack.ProvidePlugin({
+      PIXI: 'pixi.js'
+    }),
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve('src/assets'),
-          to: path.resolve('dist/assets')
+          to: path.resolve('build/assets')
         },
         {
           from: path.resolve('fbapp-config.json'),
-          to: path.resolve('dist')
+          to: path.resolve('build')
         }
       ],
     })],

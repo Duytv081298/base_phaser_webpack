@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = merge(config, {
+  entry: './src/js/index.js',
   mode: 'development',
   devServer: {
     compress: true,
